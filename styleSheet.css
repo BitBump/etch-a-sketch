@@ -20,3 +20,9 @@ div#square{
     border: solid rgb(227, 10, 17);
 
 }
+
+button#promptUser{
+
+    margin-bottom: 50px;
+
+}
