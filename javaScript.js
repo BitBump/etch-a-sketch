@@ -2,6 +2,8 @@
 const NUMBER_OF_SQUARES = 256;
 const SQUARE_SIZE = 50;
 
+let isClicked = false;
+
 //-HTML REFERENCES-----------------------------------------
 const boardDiv = document.getElementById("board");
 
@@ -24,6 +26,18 @@ function createBoard(){
     }
 
 }
+
+//-EVENT LISTENERS-----------------------------------------
+boardDiv.addEventListener("mouseup",    (event) => { isClicked = false });
+boardDiv.addEventListener("mousedown",  (event) => { isClicked = true });
+boardDiv.addEventListener("mouseleave", (event) => { isClicked = false })
+boardDiv.addEventListener("mousemove",  (event) => {
+
+    if(!isClicked){return;}
+
+    event.target.style.backgroundColor = "black";    
+
+});
 
 //-FUNCTIONS CALLS-----------------------------------------
 createBoard();
