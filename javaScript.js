@@ -11,21 +11,56 @@ const promptButton = document.getElementById("promptUser");
 
 //-FUNCTIONS-----------------------------------------------
 function createBoard(numberOfSquares){
-
-    //Calculate board-side length
-    boardDiv.setAttribute("style",`width: ${Math.sqrt(numberOfSquares)* SQUARE_SIZE}px`);
     
+    for(let a = 0; a < numberOfSquares; a++){
+        console.log(a);
 
-    for(let i=0; i<numberOfSquares; i++){
+        for(let b = 0; b < numberOfSquares; b++){            
+            
+            boardDiv.appendChild(makeASquare(numberOfSquares));
 
-        const squareDiv = document.createElement("div");
-        squareDiv.setAttribute("id", "square");
-        squareDiv.style.width = `${SQUARE_SIZE}px`;
-        squareDiv.style.height = `${SQUARE_SIZE}px`;
-        
-        boardDiv.appendChild(squareDiv);        
+        }
 
     }
+
+}
+
+function cleanBoard(elementReference){
+
+    while(elementReference.lastElementChild){
+
+        elementReference.removeChild(elementReference.lastElementChild);
+
+    }
+
+}
+
+function checkInputValidity(numberOfSquares){
+
+
+    while(numberOfSquares < 1 || numberOfSquares > 100){
+
+        numberOfSquares = Number(window.prompt("No can do, Boss! Gimme a number between 1 and 100"));
+    }
+
+    return numberOfSquares;
+
+}
+
+function makeASquare(numberOfSquares){
+
+    const squareDiv = document.createElement("div");
+    squareDiv.setAttribute("id", "square");
+    squareDiv.style.width = calculateSquareSize(numberOfSquares);
+    squareDiv.style.height =calculateSquareSize(numberOfSquares);
+
+    return squareDiv;
+    
+}
+
+function calculateSquareSize(numberOfSquares){
+
+    return `${boardDiv.offsetWidth / numberOfSquares}px`;
 
 }
 
@@ -43,8 +78,8 @@ boardDiv.addEventListener("mousemove",  (event) => {
 
 promptButton.addEventListener("click", () => {
 
-    numberOfSquares = Number(window.prompt("Input number of squares (<1024)", "16"));
-    createBoard(numberOfSquares);
+    cleanBoard(boardDiv);    
+    createBoard(checkInputValidity(numberOfSquares = Number(window.prompt("Input a number", "16"))));
 
 });
 
