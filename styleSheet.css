@@ -1,23 +1,26 @@
 div#board{
 
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
 
-    min-width: 50px;
-    min-height: 50px;
+    width: 1000px;
+    height: 1000px;
+    margin: 0px;
+    padding: 0px;
     background-color: aquamarine;
-    border: solid rebeccapurple;
 
 }
 
 div#square{
 
+    display: flex;
     box-sizing: border-box;
 
-    min-width: 10px;
-    min-height: 10px;
+    margin: 0px;
+    padding: 0px;
     background-color: rgb(246, 181, 200);
-    border: solid rgb(227, 10, 17);
+    border: 1px solid rgb(227, 10, 17);
 
 }
 
