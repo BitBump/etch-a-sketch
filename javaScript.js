@@ -1,9 +1,6 @@
 //-GLOBAL VARs---------------------------------------------
-const NUMBER_OF_SQUARES = 256;
-const SQUARE_SIZE = 50;
-
 let isClicked = false;
-let numberOfSquares = 16;
+let numberOfSquares = 1;
 
 //-HTML REFERENCES-----------------------------------------
 const boardDiv = document.getElementById("board");
@@ -11,15 +8,10 @@ const promptButton = document.getElementById("promptUser");
 
 //-FUNCTIONS-----------------------------------------------
 function createBoard(numberOfSquares){
-    
-    for(let a = 0; a < numberOfSquares; a++){
-        console.log(a);
 
-        for(let b = 0; b < numberOfSquares; b++){            
+    for(let b = 0; b < Math.pow(numberOfSquares, 2); b++){            
             
-            boardDiv.appendChild(makeASquare(numberOfSquares));
-
-        }
+        boardDiv.appendChild(makeASquare(numberOfSquares));
 
     }
 
