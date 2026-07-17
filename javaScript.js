@@ -56,6 +56,30 @@ function calculateSquareSize(numberOfSquares){
 
 }
 
+function getRandomColor(){
+
+    return Array.from({length: 3}, () => Math.floor(Math.random() * 255) + 1);
+
+}
+
+function incrementSquareOpacity(event){
+
+    if(Number(event.target.style.opacity) < 1){
+
+        /*Can't use '+=' because it attempts to append to the opacity string, instead of
+          incrementing the value it represents*/
+        event.target.style.opacity -= "-0.1"; 
+
+    }
+
+}
+
+function setSquareBackgroundColor(event){
+
+    event.target.style.backgroundColor = `rgb(${getRandomColor()})`;
+
+}
+
 //-EVENT LISTENERS-----------------------------------------
 boardDiv.addEventListener("mouseup",    (event) => { isClicked = false });
 boardDiv.addEventListener("mousedown",  (event) => { isClicked = true });
@@ -63,8 +87,8 @@ boardDiv.addEventListener("mouseleave", (event) => { isClicked = false })
 boardDiv.addEventListener("mousemove",  (event) => {
 
     if(!isClicked){return;}
-
-    event.target.style.backgroundColor = "black";    
+    setSquareBackgroundColor(event);
+    incrementSquareOpacity(event);
 
 });
 
