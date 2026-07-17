@@ -1,2 +1,2 @@
 # etch-a-sketch
-Browser implementation of the 'etch-a-sketch' game
+Browser implementation of the 'etch-a-sketch' game (TOP exercise)
